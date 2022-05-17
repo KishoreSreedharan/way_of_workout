@@ -1,9 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.way_of_workout">
+          xmlns:tools="http://schemas.android.com/tools" package="com.example.way_of_workout">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="Way Of Workout"
-        android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+           android:label="Way Of Workout"
+           android:name="${applicationName}"
+           android:usesCleartextTraffic="true"
+           android:icon="@mipmap/ic_launcher" tools:targetApi="m">
         <activity
             android:name=".MainActivity"
             android:exported="true"
