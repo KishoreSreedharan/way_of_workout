@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 import 'package:way_of_workout/level_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:store_redirect/store_redirect.dart';
 
 class DrawerMenu extends StatelessWidget {
   final Color frontColor;
@@ -47,7 +48,7 @@ class DrawerMenu extends StatelessWidget {
               icon: Icons.share,
               Title: "Share",
               pressed: ()async {
-                final urlPreview = "";
+                final urlPreview = "https://play.google.com/store/apps/details?id=com.kishore.wayofworkout";
                 await Share.share(
                   urlPreview
                 );
@@ -68,7 +69,14 @@ class DrawerMenu extends StatelessWidget {
             ownTile(
               icon: Icons.star,
               Title: "Rate App",
-              pressed: (){}
+              pressed:  ()async {
+                final url = 'https://play.google.com/store/apps/details?id=com.kishore.wayofworkout';
+                if (await canLaunch(url)) {
+                  await launch(url);
+                } else {
+                  throw 'Could not launch $url';
+                }
+              }
             ),
           ],
         ),
